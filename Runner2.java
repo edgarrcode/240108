@@ -9,7 +9,7 @@ Goals: Read the widht, height, and length of packages from file, and calculate t
 import java.util.*;
 import java.io.*;
 
-public class Runner1 {
+public class Runner2 {
 
     public static Box[] generateRandomBoxes (int arraySize) {
         Box[] generatedBoxArray = new Box[arraySize];
@@ -93,7 +93,7 @@ public class Runner1 {
 
     public static void main (String[] args) throws IOException {
         //Next, you should write a method in a class named Runner1 that will generate a random list of Boxes for testing
-        Box[] generatedBoxArray = generateRandomBoxes(20);
+        Box[] generatedBoxArray = generateRandomBoxes(10000);
         
         System.out.println("Generated Array:");
         printArray(generatedBoxArray);
@@ -107,17 +107,32 @@ public class Runner1 {
         System.out.println("---");
 
         //Insertion sort on generated array
+        long startTimeInSort = 0;
+        long endTimeInSort = 0;
+        long estimatedTimeInSort = 0;
         System.out.println("Generated Array Sorted with Insertion Sort:");
+        startTimeInSort = System.nanoTime();
         insertionSort(generatedBoxArray);
+        endTimeInSort = System.nanoTime();
+        estimatedTimeInSort = endTimeInSort - startTimeInSort;
+
         printArray(generatedBoxArray);
         System.out.println("---");
 
         //Merge sort on copied array
+        long startTimeMergeSort = 0;
+        long endTimeMergeSort = 0;
+        long estimatedTimeMergeSort = 0;
         System.out.println("Copied Array Sorted with Merge Sort:");
+        startTimeMergeSort = System.nanoTime();
         mergeSort(copiedArray);
         printArray(generatedBoxArray);
+        endTimeMergeSort = System.nanoTime();
+        estimatedTimeMergeSort = endTimeMergeSort - startTimeMergeSort;
         System.out.println("---");
 
+        System.out.println("Estimated Time Insertion Sort: " + estimatedTimeInSort + " nanoseconds");
+        System.out.println("Estimated Time Merge Sort: " + estimatedTimeMergeSort + " nanoseconds");
 
     }
 

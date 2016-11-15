@@ -1,13 +1,13 @@
 public class Box {
+  public double length;
   public double width;
   public double height;
-  public double length;
   
   //constructors
-  public Box(double newWidth, double newHeight, double newLength) {
+  public Box(double newLength, double newWidth, double newHeight) {
+    length = newLength;
     width = newWidth;
     height = newHeight;
-    length = newLength;
   }
   
   public Box() {
@@ -15,7 +15,7 @@ public class Box {
   
   //get volume
   public double getVolume() {
-    return (width * height * length);
+    return (length * width * height);
   }
 
 }
